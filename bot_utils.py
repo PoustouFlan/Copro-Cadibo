@@ -8,6 +8,10 @@ ROLES = {
     "leetcode": 837745978378682448,
 }
 
+ADMIN = {
+    427489795673948162,
+}
+
 def mention_role(name):
     if name is None:
         return ''
