@@ -39,11 +39,12 @@ def event_message(event, contest):
         description = ">>> " + description
     
     return (
+        f"───────────────────────────\n"
         f"{mention_role(contest)}\n"
         f"**{name}**\n\n"
         f"{arrow_to_timestamp(begin)} ({arrow_to_countdown(begin)})\n"
         f"{duration_message}\n"
-        f"{description}"
+        f"{description}\n"
     )
 
 
