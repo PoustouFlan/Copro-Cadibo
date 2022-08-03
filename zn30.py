@@ -1,5 +1,5 @@
 from discord.ext import commands
-from discord import ScheduledEvent
+import discord
 from bot_utils import *
 from calendar_utils import *
 
@@ -23,13 +23,13 @@ async def week_contests(ctx, contest):
         begin = event.begin
         end = event.end
         description = event.description
-        channel = bot.get_channel(CHANNELS[contest])
-        await create_scheduled_event(
+        location = description.split('\n')[0]
+        await ctx.guild.create_scheduled_event(
             name = name,
             start_time = begin,
             end_time = end,
-            channel = channel,
-            description = description
+            description = description,
+            location = location,
         )
 
 bot.run(TOKEN)
