@@ -1,3 +1,4 @@
+from secret import TOKEN
 
 ROLES = {
     "codeforces": 835477747840974868,
@@ -14,3 +15,5 @@ def mention_role(name):
     if identifier not in ROLES:
         return "@" + name
     return f"<@&{ROLES[identifier]}>"
+
+
