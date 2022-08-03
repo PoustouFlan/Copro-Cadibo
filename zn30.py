@@ -4,7 +4,11 @@ from bot_utils import *
 from calendar_utils import *
 
 
-bot = commands.Bot(command_prefix = "$ ", help_command = None)
+bot = commands.Bot(
+    command_prefix = "$ ",
+    help_command = None,
+    intents = discord.Intents.all()
+)
 
 @bot.command()
 async def week_contests(ctx, contest):
