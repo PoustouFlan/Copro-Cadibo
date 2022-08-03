@@ -32,3 +32,18 @@ def event_platform(event):
         return ''
     return name[1].split(']')[0]
     
+def timedelta_message(timedelta):
+    seconds = timedelta.seconds
+    minutes = seconds // 60
+    hours = minutes // 60
+    minutes %= 60
+    days = timedelta.days
+    result = ""
+    if days == 1:
+        result = "1 jour"
+    if days > 1:
+        result = f"{days} jours"
+    if days > 0 and minutes + hours > 0:
+        result += ", "
+    result += f"{hours:02d}h{minutes:02d}"
+    return result
