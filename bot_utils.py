@@ -29,6 +29,17 @@ CHANNELS = {
     "topcoder": 1003419566917025814,
 }
 
+DISPLAY = {
+    "atcoder": "[AtCoder]",
+    "codechef": "[CodeChef]",
+    "codeforces": "[Codeforces]",
+    "codingame": "[CodinGame]",
+    "codejam": "[Code Jam]",
+    "hackerrank": "[HackerRank]",
+    "leetcode": "[LeetCode]",
+    "topcoder": "[TopCoder]",
+}
+
 def mention_role(name):
     if name is None:
         return ''
