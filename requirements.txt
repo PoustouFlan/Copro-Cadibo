@@ -1,4 +1,4 @@
 requests
-discord.py
 python-dateutil
+git+https://github.com/Rapptz/discord.py
 ics
