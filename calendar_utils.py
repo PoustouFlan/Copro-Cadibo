@@ -38,5 +38,5 @@ def timedelta_message(timedelta):
         result = f"{days} jours"
     if days > 0 and minutes + hours > 0:
         result += ", "
-    result += f"{hours:02d}h{minutes:02d}"
+    result += f"{hours}h{minutes:02d}"
     return result
