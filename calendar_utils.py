@@ -24,3 +24,11 @@ def week_events(contest):
     events = sorted(calendar.events)
     events = filter(is_event_this_week, events)
     return events
+
+def event_platform(event):
+    name = event.name
+    name = name.split('[')
+    if len(name) < 2:
+        return ''
+    return name[1].split(']')[0]
+    
