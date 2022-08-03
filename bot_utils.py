@@ -1,5 +1,5 @@
 from secret import TOKEN
-from calendar_utils import event_platform, timedelta_message
+from calendar_utils import timedelta_message
 
 ROLES = {
     "codeforces": 835477747840974868,
