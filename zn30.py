@@ -23,9 +23,9 @@ async def week_contests(ctx, contest):
         begin = event.begin
         end = event.end
         description = event.description
-        location = description.split('\n')[0]
+        location = description.split('\n')[0].split('Link: ')[1]
         await ctx.guild.create_scheduled_event(
-            name = name,
+            name = f"{DISPLAY[contest]} {name}",
             start_time = begin,
             end_time = end,
             description = description,
