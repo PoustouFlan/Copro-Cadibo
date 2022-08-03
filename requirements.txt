@@ -1,4 +1,4 @@
 requests
-discordpy
+discord.py
 python-dateutil
 ics
