@@ -1,0 +1,4 @@
+requests
+discordpy
+python-dateutil
+ics

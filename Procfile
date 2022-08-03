@@ -1,1 +1,1 @@
-worker: python zn30.py
+bot: python zn30.py
