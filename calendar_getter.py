@@ -8,7 +8,8 @@ def debug(*args, **kwargs):
 
 ICS_URLS = {
     "codeforces": "https://calendar.google.com/calendar/ical/br1o1n70iqgrrbc875vcehacjg%40group.calendar.google.com/public/basic.ics",
-    #"codechef": "https://calendar.google.com/calendar/ical/ogc7qt4hlg454ggkj9o6ttqnq8%40group.calendar.google.com/public/basic.ics",
+    "codechef": "https://calendar.google.com/calendar/ical/ogc7qt4hlg454ggkj9o6ttqnq8%40group.calendar.google.com/public/basic.ics",
+    "topcoder": "https://calendar.google.com/calendar/ical/qshn4jb7pq3f8l46nvvilj5c6o%40group.calendar.google.com/public/basic.ics",
 }
 
 CALENDARS = {}
