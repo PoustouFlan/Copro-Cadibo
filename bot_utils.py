@@ -1,4 +1,5 @@
 from secret import TOKEN
+from calendar_utils import event_platform, timedelta_message
 
 ROLES = {
     "codeforces": 835477747840974868,
@@ -19,5 +20,31 @@ def mention_role(name):
     if identifier not in ROLES:
         return "@" + name
     return f"<@&{ROLES[identifier]}>"
+
+def arrow_to_timestamp(arrow):
+    unix = int(arrow.timestamp())
+    return f"<t:{unix}>"
+
+def arrow_to_countdown(arrow):
+    unix = int(arrow.timestamp())
+    return f"<t:{unix}:R>"
+
+def event_message(event):
+    name = event.name
+    begin = event.begin
+    duration = event.duration
+    description = event.description
+    platform = event_platform(event)
+    duration_message = timedelta_message(duration)
+    if description != '':
+        description = ">>> " + description
+    
+    return (
+        f"{mention_role(platform)}\n"
+        f"**{name}**\n\n"
+        f"{arrow_to_timestamp(begin)} ({arrow_to_countdown(begin)})\n"
+        f"{duration_message}\n"
+        f"{description}"
+    )
 
 
