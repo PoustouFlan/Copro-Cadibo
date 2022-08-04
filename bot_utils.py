@@ -40,6 +40,14 @@ DISPLAY = {
     "topcoder": "[TopCoder]",
 }
 
+def admin_only(func):
+    async def wrapper(ctx, *args, **kwargs):
+        if ctx.author.id not in ADMIN:
+            await ctx.send("403 forbidden")
+            return False
+        await func(ctx, *args, **kwargs)
+    return wrapper
+
 def mention_role(name):
     if name is None:
         return ''
