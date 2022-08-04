@@ -40,6 +40,14 @@ DISPLAY = {
     "topcoder": "[TopCoder]",
 }
 
+def contest_icon(contest):
+    try:
+        file = open(f"icons/{contest}.png", 'rb')
+    except FileNotFoundError:
+        return None
+    return file.read()
+        
+
 def admin_only(func):
     async def wrapper(ctx, *args, **kwargs):
         if ctx.author.id not in ADMIN:
