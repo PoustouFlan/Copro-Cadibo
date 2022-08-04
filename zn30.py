@@ -43,14 +43,26 @@ async def update_contest(ctx, contest):
         end = event.end
         description = f"{event.description}uid: {event.uid}\n"
         location = description.split('\n')[0].split('Link: ')[1]
-        await ctx.guild.create_scheduled_event(
-            name = f"{DISPLAY[contest]} {name}",
-            start_time = begin,
-            end_time = end,
-            description = description,
-            location = location,
-        )
-        rompiche(2)
+        icon = contest_icon(contest)
+
+        if icon is not None:
+            await ctx.guild.create_scheduled_event(
+                name = f"{DISPLAY[contest]} {name}",
+                start_time = begin,
+                end_time = end,
+                description = description,
+                location = location,
+                image = icon,
+            )
+        else:
+            await ctx.guild.create_scheduled_event(
+                name = f"{DISPLAY[contest]} {name}",
+                start_time = begin,
+                end_time = end,
+                description = description,
+                location = location,
+            )
+        rompiche(4)
     debug("Complete.")
 
 @commands.max_concurrency(1, per=commands.BucketType.guild, wait=False)
