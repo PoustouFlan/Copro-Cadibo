@@ -10,19 +10,23 @@ bot = commands.Bot(
     intents = discord.Intents.all()
 )
 
+@admin_only
 @bot.command()
-async def week_contests(ctx, contest):
-    if ctx.author.id not in ADMIN:
-        await ctx.send("403 forbidden")
-        return
+async def clear_scheduled_events(ctx):
+    guild = ctx.guild
+    for scheduled_event in guild.scheduled_events:
+        await scheduled_event.delete()
 
+@admin_only
+@bot.command()
+async def future_contests(ctx, contest):
     await ctx.message.delete()
-    events = week_events(contest)
+    events = future_events(contest)
     for event in events:
         name = event.name
         begin = event.begin
         end = event.end
-        description = event.description
+        description = f"{event.description}\nuid: {event.uid}"
         location = description.split('\n')[0].split('Link: ')[1]
         await ctx.guild.create_scheduled_event(
             name = f"{DISPLAY[contest]} {name}",
