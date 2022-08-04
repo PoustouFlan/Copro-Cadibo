@@ -12,6 +12,7 @@ ICS_URLS = {
     "codeforces": "https://calendar.google.com/calendar/ical/br1o1n70iqgrrbc875vcehacjg%40group.calendar.google.com/public/basic.ics",
     "leetcode": "https://calendar.google.com/calendar/ical/tlvovsip3t3045rnkq0rt7d77c%40group.calendar.google.com/public/basic.ics",
     "topcoder": "https://calendar.google.com/calendar/ical/qshn4jb7pq3f8l46nvvilj5c6o%40group.calendar.google.com/public/basic.ics",
+    "google": "https://calendar.google.com/calendar/ical/7qk9j0n6sa9hkc6hfgiho0m6og%40group.calendar.google.com/public/basic.ics",
 }
 
 CALENDARS = {}
