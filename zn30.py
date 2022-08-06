@@ -1,9 +1,11 @@
-from discord.ext import commands
 import discord
+from discord.ext import commands
 from bot_utils import *
 from calendar_utils import *
+from calendar_getter import *
 from time import sleep as rompiche
 
+CALENDARS = {}
 
 bot = commands.Bot(
     command_prefix = "$ ",
@@ -33,7 +35,8 @@ async def clear_scheduled_events(ctx):
 @bot.command()
 async def update_contest(ctx, contest):
     debug(f"Updating contest {contest}...")
-    events = future_events(contest)
+    CALENDARS[contest] = get_calendars((contest,))[contest]
+    events = future_events(CALENDARS[contest])
     uids = scheduled_event_uids(ctx.guild)
     events = filter(lambda event: is_event_new(event, uids), events)
     for event in events:
@@ -68,7 +71,7 @@ async def update_contest(ctx, contest):
 @commands.max_concurrency(1, per=commands.BucketType.guild, wait=False)
 @bot.command()
 async def update(ctx):
-    for contest in CALENDARS:
+    for contest in CONTESTS:
         await update_contest(ctx, contest)
 
 bot.run(TOKEN)
