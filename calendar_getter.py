@@ -5,6 +5,14 @@ from sys import stderr
 def debug(*args, **kwargs):
     print(*args, **kwargs, file = stderr)
 
+CONTESTS = (
+    "atcoder",
+    "codechef",
+    "codeforces",
+    "leetcode",
+    "topcoder",
+    "google",
+)
 
 ICS_URLS = {
     "atcoder": "https://calendar.google.com/calendar/ical/vdobhfoodrv59522b684lhfs7c%40group.calendar.google.com/public/basic.ics",
@@ -15,11 +23,13 @@ ICS_URLS = {
     "google": "https://calendar.google.com/calendar/ical/7qk9j0n6sa9hkc6hfgiho0m6og%40group.calendar.google.com/public/basic.ics",
 }
 
-CALENDARS = {}
-
-for contest, url in ICS_URLS.items():
-    debug(f"Requesting {contest} ics...")
-    ics = get(url).text
-    debug(f"Parsing {contest} ics...")
-    calendar = Calendar(ics)
-    CALENDARS[contest] = calendar
+def get_calendars(contests = CONTESTS):
+    calendars = {}
+    for contest in contests:
+        url = ICS_URLS[contest]
+        debug(f"Requesting {contest} ics...")
+        ics = get(url).text
+        debug(f"Parsing {contest} ics...")
+        calendar = Calendar(ics)
+        calendars[contest] = calendar
+    return calendars
