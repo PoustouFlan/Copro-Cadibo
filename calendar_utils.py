@@ -1,12 +1,12 @@
-from calendar_getter import *
 from datetime import datetime, date, timedelta
 from dateutil import tz
+# TODO : Switch to logger
+from calendar_getter import debug
 
 def is_event_future(event):
     return event.begin >= datetime.now(event.begin.tzinfo)
 
-def future_events(contest):
-    calendar = CALENDARS[contest]
+def future_events(calendar):
     events = sorted(calendar.events)
     events = filter(is_event_future, events)
     return events
