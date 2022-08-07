@@ -1,8 +1,8 @@
 from calendar_utils import timedelta_message
-from yaml import load
+from yaml import safe_load
 
 configuration_file = open("configuration.yaml", "r")
-configuration = load(configuration_file.read())
+configuration = safe_load(configuration_file.read())
 
 TOKEN = configuration['token']
 ROLES = configuration['roles']
