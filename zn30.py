@@ -34,7 +34,7 @@ def scheduled_event_uids(guild):
 def is_event_new(event, uids):
     return event.uid not in uids
 
-@admin_only
+@commands.has_role(ROLES['admin'])
 @bot.command()
 async def clear_scheduled_events(ctx):
     guild = ctx.guild
