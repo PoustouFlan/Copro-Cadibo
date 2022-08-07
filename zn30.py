@@ -2,6 +2,7 @@ import discord
 import logging
 from discord.client import _ColourFormatter
 from discord.ext import commands
+from discord.utils import get
 from bot_utils import *
 from calendar_utils import *
 from calendar_getter import *
@@ -76,6 +77,11 @@ async def update_contest(ctx, contest):
             )
         rompiche(4)
     log.info("Complete.")
+
+    for emoji in bot.emojis:
+        if emoji.name == contest:
+            await ctx.message.add_reaction(emoji)
+            return
 
 @commands.max_concurrency(1, per=commands.BucketType.guild, wait=False)
 @bot.command()
