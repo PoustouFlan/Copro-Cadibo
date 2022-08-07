@@ -1,12 +1,8 @@
 from requests import get
 from ics import Calendar
-from sys import stderr
 
 import logging
 log = logging.getLogger("zn30.utils")
-
-def debug(*args, **kwargs):
-    print(*args, **kwargs, file = stderr)
 
 CONTESTS = (
     "atcoder",
