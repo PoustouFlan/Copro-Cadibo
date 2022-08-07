@@ -1,9 +1,18 @@
 import discord
+import logging
+from discord.client import _ColourFormatter
 from discord.ext import commands
 from bot_utils import *
 from calendar_utils import *
 from calendar_getter import *
 from time import sleep as rompiche
+
+log = logging.getLogger("zn30")
+log.setLevel(logging.DEBUG)
+
+stream = logging.StreamHandler()
+stream.setFormatter(_ColourFormatter())
+log.addHandler(stream)
 
 CALENDARS = {}
 
@@ -34,14 +43,14 @@ async def clear_scheduled_events(ctx):
 
 @bot.command()
 async def update_contest(ctx, contest):
-    debug(f"Updating contest {contest}...")
+    log.info(f"Updating contest {contest}...")
     CALENDARS[contest] = get_calendars((contest,))[contest]
     events = future_events(CALENDARS[contest])
     uids = scheduled_event_uids(ctx.guild)
     events = filter(lambda event: is_event_new(event, uids), events)
     for event in events:
         name = event.name
-        debug(f"Adding new event : {name}")
+        log.info(f"Adding new event : {name}")
         begin = event.begin
         end = event.end
         description = f"{event.description}uid: {event.uid}\n"
@@ -66,7 +75,7 @@ async def update_contest(ctx, contest):
                 location = location,
             )
         rompiche(4)
-    debug("Complete.")
+    log.info("Complete.")
 
 @commands.max_concurrency(1, per=commands.BucketType.guild, wait=False)
 @bot.command()

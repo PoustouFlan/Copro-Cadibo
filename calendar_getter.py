@@ -2,6 +2,9 @@ from requests import get
 from ics import Calendar
 from sys import stderr
 
+import logging
+log = logging.getLogger("zn30.utils")
+
 def debug(*args, **kwargs):
     print(*args, **kwargs, file = stderr)
 
@@ -27,9 +30,9 @@ def get_calendars(contests = CONTESTS):
     calendars = {}
     for contest in contests:
         url = ICS_URLS[contest]
-        debug(f"Requesting {contest} ics...")
+        log.info(f"Requesting {contest} ics...")
         ics = get(url).text
-        debug(f"Parsing {contest} ics...")
+        log.info(f"Parsing {contest} ics...")
         calendar = Calendar(ics)
         calendars[contest] = calendar
     return calendars
