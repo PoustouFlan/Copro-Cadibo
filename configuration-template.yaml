@@ -1,6 +1,8 @@
+# Please replace this with your secret token.
 token: "YOUR_TOKEN_HERE"
 
-
+# IDs of roles associated with each contest.
+# You also need an `admin` role to run admin-only commands.
 roles:
         atcoder: 837746179138912307
         codechef: 835477747840974868
@@ -12,6 +14,7 @@ roles:
         yukicoder: 837746728781611038
         admin: 1004491031628230756
 
+# IDs of text channels associated with each contest.
 channels:
         atcoder: 1001140362577985546
         codechef: 1004380321715847280
@@ -22,6 +25,7 @@ channels:
         leetcode: 1003419750350717079
         topcoder: 1003419566917025814
 
+# Display string of each contest.
 display:
         atcoder: "[AtCoder]"
         codechef: "[CodeChef]"
