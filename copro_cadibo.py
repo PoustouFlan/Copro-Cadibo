@@ -89,4 +89,15 @@ async def update(ctx):
     for contest in CONTESTS:
         await update_contest(ctx, contest)
 
+@bot.command()
+async def subscribe(ctx, contest):
+    if contest not in CONTESTS:
+        await ctx.reply(f"Unknown contest `{contest}`.\n"
+                         "Available contests are :\n"
+                         ">>>  - "+"\n - ".join(CONTESTS))
+    else:
+        role = ctx.guild.get_role(ROLES[contest])
+        await ctx.author.add_roles(role)
+        await ctx.message.add_reaction("✅")
+
 bot.run(TOKEN)
